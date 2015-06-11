@@ -34,6 +34,7 @@ var fps = 0;
 var fpsCount = 0;
 var fpsTime = 0;
 
+
 var DEBUG = 0; //0 FOR OFF 1 FOR ON: drawing debug info
 
 var SCREEN_WIDTH = canvas.width;
@@ -43,7 +44,7 @@ var keyboard = new Keyboard();
 
 var stateManager = new StateManager();
 
-stateManager.pushstate( new SplashState() );
+stateManager.pushState( new SplashState() );
 
 
 function run() 
@@ -52,15 +53,15 @@ function run()
 	context.fillRect(0, 0, canvas.width, canvas.height);
 	
 	var deltaTime = getDeltaTime();
+	var dt = deltaTime;
 	
 	stateManager.update(deltaTime);
-	
 	stateManager.draw();
 	
 	if(DEBUG ==1)
 	{
 		fpsTime == deltaTime
-		fpsCount ==;
+		fpsCount++;
 		if(fpsTime >= 1)
 		{
 			fpsTime -= 1;
