@@ -45,7 +45,7 @@ var keyboard = new Keyboard();
 var stateManager = new StateManager();
 
 stateManager.pushState( new SplashState() );
-
+//stateManager.pushState( new GameState() );
 
 function run() 
 {
