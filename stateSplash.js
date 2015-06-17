@@ -13,7 +13,6 @@ SplashState.prototype.unload = function()
 	
 }
 
-//var STATE_GAME = new SplashState;
 var splashTimer = 3;
 SplashState.prototype.update = function(dt) 
 {
