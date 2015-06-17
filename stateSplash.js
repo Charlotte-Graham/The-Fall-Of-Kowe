@@ -13,19 +13,25 @@ SplashState.prototype.unload = function()
 	
 }
 
+//var STATE_GAME = new SplashState;
+var splashTimer = 3;
 SplashState.prototype.update = function(dt) 
 {
-	
+	context.fillStyle = "#003300";
+	context.fillRect(0, 0, canvas.width, canvas.height);
+
+	splashTimer -= dt;
+    if(splashTimer <= 0)
+    {
+        gameState = STATE_GAME;
+        return;
+    }
 }
 
 SplashState.prototype.draw = function() 
 {
-	//context.font="80px Arial";
-	//context.fillStyle = "#F8F8FF";
-	//var width = context.measureText("TEST SPLASH SCREEN").width;
-	//context.fillText("TEST SPLASH SCREEN", SCREEN_WIDTH/2, SCREEN HEIGHT/2)
-		context.fillStyle = "#F8F8FF";
-		context.font="76px Arial";
-		var width = context.measureText("SPLASH SCREEN").width;
-		context.fillText("SPLASH SCREEN", canvas.width/2 - width/2, canvas.height/2);
+	context.fillStyle = "#FF6600";
+	context.font="76px Hobo Std";
+	var width = context.measureText("Fall of Kowe").width;
+	context.fillText("Fall of Kowe", canvas.width/2 - width/2, canvas.height/2);
 }
