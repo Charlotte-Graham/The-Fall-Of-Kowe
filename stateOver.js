@@ -1,19 +1,19 @@
-var SplashState = function() 
+var OverState = function() 
 {
 	this.prototype = BaseState;
 }
 
-SplashState.prototype.load = function() 
+OverState.prototype.load = function() 
 {
 	
 }
 
-SplashState.prototype.unload = function() 
+OverState.prototype.unload = function() 
 {
 	
 }
 
-SplashState.prototype.update = function(dt) 
+OverState.prototype.update = function(dt) 
 {
 	context.fillStyle = "#003300";
 	context.fillRect(0, 0, canvas.width, canvas.height);
@@ -22,7 +22,7 @@ SplashState.prototype.update = function(dt)
     return;
 }
 
-SplashState.prototype.draw = function() 
+OverState.prototype.draw = function() 
 {
 	context.fillStyle = "#FF6600";
 	context.font="76px Hobo Std";

@@ -46,6 +46,7 @@ var stateManager = new StateManager();
 
 stateManager.pushState( new SplashState() );
 //stateManager.pushState( new GameState() );
+//stateManager.pushState( new OverState() );
 
 function run() 
 {
