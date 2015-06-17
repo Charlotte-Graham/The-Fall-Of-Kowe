@@ -24,7 +24,7 @@ OverState.prototype.update = function(dt)
 
 OverState.prototype.draw = function() 
 {
-	context.fillStyle = "#FF6600";
+	context.fillStyle = "#red";
 	context.font="76px Hobo Std";
 	var width = context.measureText("Game Over").width;
 	context.fillText("Game Over", canvas.width/2 - width/2, canvas.height/2);
