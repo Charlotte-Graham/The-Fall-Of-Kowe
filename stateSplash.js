@@ -41,6 +41,6 @@ SplashState.prototype.draw = function()
 
 	context.fillStyle = "#FF6600";
 	context.font="34px Hobo Std";
-	var width = context.measureText("Left/Right Arrows").width;
-	context.fillText("Left/Right Arrows", SCREEN_WIDTH - 425, 350, canvas.width/2 - width/2, canvas.height/2);
+	var width = context.measureText("Left/Right Arrow Keys").width;
+	context.fillText("Left/Right Arrow Keys", SCREEN_WIDTH - 405, 350, canvas.width/2 - width/2, canvas.height/2);
 }
