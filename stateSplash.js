@@ -16,7 +16,7 @@ SplashState.prototype.unload = function()
 var splashTimer = 3;
 SplashState.prototype.update = function(dt) 
 {
-	context.fillStyle = "#003300";
+	context.fillStyle = "#003366";
 	context.fillRect(0, 0, canvas.width, canvas.height);
 
 	splashTimer -= dt;
