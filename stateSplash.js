@@ -13,9 +13,19 @@ SplashState.prototype.unload = function()
 	
 }
 
+//var STATE_GAME = new SplashState;
+var splashTimer = 3;
 SplashState.prototype.update = function(dt) 
 {
-	
+	context.fillStyle = "#003300";
+	context.fillRect(0, 0, canvas.width, canvas.height);
+
+	splashTimer -= dt;
+    if(splashTimer <= 0)
+    {
+        gameState = STATE_GAME;
+        return;
+    }
 }
 
 SplashState.prototype.draw = function() 
