@@ -37,7 +37,7 @@ var Player = function(x, y) {
 	
 	
 	this.position = new Vector2();
-	this.position.set( 35 , 250 );
+	this.position.set( 100 , 250 );
 	
 	this.width = 72.5;
 	this.height = 96;
@@ -50,6 +50,9 @@ var Player = function(x, y) {
 	this.isDead = false;
 	
 	this.direction = LEFT;
+	this.directionX = 0;
+	this.directionY = 0;
+	
 	
 	this.cooldownTimer = 0;
 };
@@ -72,6 +75,40 @@ Player.prototype.update = function(dt)
 		if(this.sprite.currentAnimation != ANIM_WALK_LEFT)
 			this.sprite.setAnimation(ANIM_WALK_LEFT);
 			this.x -= PLAYER_SPEED * dt;
+			this.position.x -= 1;
+	}
+	
+	else if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true) {
+		right = true;
+		this.direction = RIGHT;
+		if(this.sprite.currentAnimation != ANIM_WALK_RIGHT)
+			this.sprite.setAnimation(ANIM_WALK_RIGHT);
+			this.x += PLAYER_SPEED * dt;
+			this.position.x += 1;
+	}
+	
+	else {
+		if(this.jumping == false && this.falling == false)
+		{
+			if(this.direction == LEFT)
+			{
+				if(this.sprite.currentAnimation != ANIM_IDLE_LEFT)
+				this.sprite.setAnimation(ANIM_IDLE_LEFT);
+			}
+			else
+			{
+				if(this.sprite.currentAnimation != ANIM_IDLE_RIGHT)
+				this.sprite.setAnimation(ANIM_IDLE_RIGHT);
+			}
+		}
+	}
+	
+	if(keyboard.isKeyDown(keyboard.KEY_DOWN) == true) {
+		this.position.y += 1;
+	}
+	
+	if(keyboard.isKeyDown(keyboard.KEY_UP) == true) {
+		this.position.y -= 1;
 	}
 }
 
