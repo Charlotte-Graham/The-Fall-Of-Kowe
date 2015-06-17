@@ -44,14 +44,13 @@ var keyboard = new Keyboard();
 
 var stateManager = new StateManager();
 
-<<<<<<< HEAD
+
 stateManager.pushState( new GameState() );
 
-=======
-stateManager.pushState( new SplashState() );
+//stateManager.pushState( new SplashState() );
 //stateManager.pushState( new GameState() );
 //stateManager.pushState( new OverState() );
->>>>>>> 1e1f866d2c6cedb270778a4ccf84b72f71684874
+
 
 function run() 
 {
