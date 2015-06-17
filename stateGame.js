@@ -1,3 +1,5 @@
+var player = new Player();
+
 var GameState = function() 
 {
 	this.prototype = BaseState;
@@ -15,11 +17,13 @@ GameState.prototype.unload = function()
 
 GameState.prototype.update = function(dt) 
 {
-	
+	player.update(dt);
 }
 
 GameState.prototype.draw = function() 
 {
+	
+	
 	// Paint canvas black.
 	context.fillStyle = "black";
 	context.rect(0, 0, canvas.width, canvas.height);
@@ -50,4 +54,5 @@ GameState.prototype.draw = function()
 	
 	// Paint the starfield.
 	stars();
+	player.draw();
 }
