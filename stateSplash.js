@@ -33,4 +33,14 @@ SplashState.prototype.draw = function()
 	context.font="76px Hobo Std";
 	var width = context.measureText("Fall of Kowe").width;
 	context.fillText("Fall of Kowe", canvas.width/2 - width/2, canvas.height/2);
+
+	context.fillStyle = "#FF6600";
+	context.font="34px Hobo Std";
+	var width = context.measureText("Controls").width;
+	context.fillText("Controls", SCREEN_WIDTH - 400, 300, canvas.width/2 - width/2, canvas.height/2);
+
+	context.fillStyle = "#FF6600";
+	context.font="34px Hobo Std";
+	var width = context.measureText("Left/Right Arrows").width;
+	context.fillText("Left/Right Arrows", SCREEN_WIDTH - 425, 350, canvas.width/2 - width/2, canvas.height/2);
 }
