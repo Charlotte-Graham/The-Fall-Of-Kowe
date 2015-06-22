@@ -1,9 +1,6 @@
 var DEBRIS_SPEED = 0.8;
 var debrisArray = [];
 
-var SCREEN_WIDTH = 640;
-var SCREEN_HEIGHT = 480;
-
 function rand(floor, ceil)
 {
     return Math.floor( (Math.random()* (ceil-floor)) +floor );
