@@ -76,7 +76,7 @@ Player.prototype.update = function(dt)
 		if(this.sprite.currentAnimation != ANIM_WALK_LEFT)
 			this.sprite.setAnimation(ANIM_WALK_LEFT);
 			this.x -= PLAYER_SPEED * dt;
-			this.position.x -= 1;
+			this.position.x -= 2;
 			score = score + 1;
 	}
 	
@@ -87,7 +87,7 @@ Player.prototype.update = function(dt)
 		if(this.sprite.currentAnimation != ANIM_WALK_RIGHT)
 			this.sprite.setAnimation(ANIM_WALK_RIGHT);
 			this.x += PLAYER_SPEED * dt;
-			this.position.x += 1;
+			this.position.x += 2;
 			score = score + 1;
 	}
 	
@@ -110,15 +110,32 @@ Player.prototype.update = function(dt)
 	
 	if(keyboard.isKeyDown(keyboard.KEY_DOWN) == true) 
 	{
-		this.position.y += 1;
+		this.position.y += 2;
 		score = score + 1;
 	}
 	
 	if(keyboard.isKeyDown(keyboard.KEY_UP) == true) 
 	{
-		this.position.y -= 1;
+		this.position.y -= 2;
 		score = score + 1;
 	}
+	
+	if (this.position.x >= canvas.width)
+        {
+            this.position.x = 0;
+        }
+    else if (this.position.x < 0)
+        {
+            this.position.x = canvas.width - 1;
+        }
+    if (this.position.y >= canvas.height)
+        {
+            this.position.y = 0;
+        }
+    else if (this.position.y < 0)
+        {
+            this.position.y = canvas.height - 1;
+        }
 }
 
 Player.prototype.draw = function()
