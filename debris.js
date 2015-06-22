@@ -1,5 +1,5 @@
 var spawnTimer = 0;
-var ASTEROID_SPEED = 0.8;
+var DEBRIS_SPEED = 0.8;
 var debris = [];
 
 function rand(floor, ceil)
