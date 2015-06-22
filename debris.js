@@ -40,7 +40,7 @@ function spawnDebris()
     debris.velocityX = -dirX * DEBRIS_SPEED;
     debris.velocityY = -dirY * DEBRIS_SPEED;
     
-    debris.push(debrisArray);
+    debrisArray.push(debris);
 }
     /*for(var i=0; i<debris.length; i++)
     {
