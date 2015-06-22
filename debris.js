@@ -1,6 +1,6 @@
 var spawnTimer = 0;
 var DEBRIS_SPEED = 0.8;
-var debriss = [];
+var debrisArray = [];
 
 function rand(floor, ceil)
 {
@@ -43,7 +43,7 @@ var Debris = function()
         debris.velocityX = -dirX * DEBRIS_SPEED;
         debris.velocityY = -dirY * DEBRIS_SPEED;
         
-        debris.push(debriss);
+        debris.push(debrisArray);
     }
 
     /*this.image = document.createElement("img");
