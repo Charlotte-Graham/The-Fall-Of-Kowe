@@ -17,8 +17,8 @@ var Debris = function()
         
         debris.image = document.createElement("img");
         debris.image.src = "over.png";
-        debris.width = 69;
-        debris.height = 75;
+        debris.width = 32;
+        debris.height = 32;
         
         var x = SCREEN_WIDTH/2;
         var y = SCREEN_HEIGHT/2;
