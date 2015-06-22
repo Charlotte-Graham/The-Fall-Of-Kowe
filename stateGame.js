@@ -1,5 +1,4 @@
 var player = new Player();
-var debrisSpawn = new spawnDebris();
 
 var GameState = function() 
 {
@@ -58,15 +57,15 @@ GameState.prototype.draw = function()
 	var heartImage = document.createElement("img");
 	heartImage.src = "hud_heartFull.png";
 	var spawnTimer = 0;
-	var SCREEN_WIDTH = canvas.width;
-	var SCREEN_HEIGHT = canvas.height;
+	//var SCREEN_WIDTH = canvas.width;
+	//var SCREEN_HEIGHT = canvas.height;
 	
 	// Paint canvas black.
 	context.fillStyle = "black";
 	context.rect(0, 0, canvas.width, canvas.height);
 	context.fill();
 	
-	function spawnAsteroid()
+	/*function spawnAsteroid()
 	{
 	var type = rand(0, 3);
 	
@@ -101,7 +100,7 @@ GameState.prototype.draw = function()
 	asteroid.velocityY = -dirY * ASTEROID_SPEED;
 
 	asteroids.push(asteroid);
-	}
+	}*/
 	
 	function stars() 
 	{
@@ -156,7 +155,7 @@ GameState.prototype.draw = function()
 		
 	}*/
 	
-	/*for(var i=0; i<debrisArray.length; i++)
+	for(var i=0; i<debrisArray.length; i++)
 	{
 		context.drawImage(debrisArray[i].image, debrisArray[i].x, debrisArray[i].y);
 	}
@@ -165,6 +164,6 @@ GameState.prototype.draw = function()
 	if(spawnTimer <= 0)
 	{
 		spawnTimer = 1;
-		debrisSpawn();
-	}*/
+		spawnDebris();
+	}
 }

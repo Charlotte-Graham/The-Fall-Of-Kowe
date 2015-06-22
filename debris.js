@@ -1,6 +1,9 @@
 var DEBRIS_SPEED = 0.8;
 var debrisArray = [];
 
+var SCREEN_WIDTH = 640;
+var SCREEN_HEIGHT = 480;
+
 function rand(floor, ceil)
 {
     return Math.floor( (Math.random()* (ceil-floor)) +floor );
@@ -42,6 +45,7 @@ function spawnDebris()
     
     debrisArray.push(debris);
 }
+
     /*for(var i=0; i<debris.length; i++)
     {
         for(var j=0; j<player.length; j++)
