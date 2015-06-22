@@ -75,7 +75,7 @@ Debris.prototype.draw = function()
         spawnDebris();
     }
 
-    for(var i=0; i<debris.length; i++)
+    /*for(var i=0; i<debris.length; i++)
     {
         for(var j=0; j<player.length; j++)
         {
@@ -90,5 +90,5 @@ Debris.prototype.draw = function()
                 break;
             }
         }
-    }
+    }*/
 }
