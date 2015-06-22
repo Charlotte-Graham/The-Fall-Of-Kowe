@@ -1,4 +1,5 @@
 var player = new Player();
+var debrisSpawn = new spawnDebris();
 
 var GameState = function() 
 {
@@ -18,6 +19,34 @@ GameState.prototype.unload = function()
 GameState.prototype.update = function(dt) 
 {
 	player.update(dt);
+	/*for(var i=0; i<debrisArray.length; i++)
+	{
+		// update the asteroids position according to its current velocity.
+		// TODO: Dont forget to multiply by deltaTime to get a constant speed
+		debrisArray[i].x = debrisArray[i].x + debrisArray[i].velocityX;
+		debrisArray[i].y = debrisArray[i].y + debrisArray[i].velocityY;
+			
+		// TODO: check if the asteroid has gone out of the screen boundaries
+		// If so, wrap the asteroid around the screen so it comes back from the
+		// other side
+		//wrap asteroid
+		if (debris.x >= canvas.width)
+			{
+				debris.x = 0;
+			}
+		else if (debris.x < 0)
+			{
+				debris.x = canvas.width - 1;
+			}
+		if (debris.y >= canvas.height)
+			{
+				debris.y = 0;
+			}
+		else if (debris.y < 0)
+			{
+				debris.y = canvas.height - 1;
+			}
+	}*/
 }
 
 GameState.prototype.draw = function() 
@@ -28,11 +57,51 @@ GameState.prototype.draw = function()
 	//var score = 0;
 	var heartImage = document.createElement("img");
 	heartImage.src = "hud_heartFull.png";
+	var spawnTimer = 0;
+	var SCREEN_WIDTH = canvas.width;
+	var SCREEN_HEIGHT = canvas.height;
 	
 	// Paint canvas black.
 	context.fillStyle = "black";
 	context.rect(0, 0, canvas.width, canvas.height);
 	context.fill();
+	
+	function spawnAsteroid()
+	{
+	var type = rand(0, 3);
+	
+	var asteroid = {};
+
+	asteroid.image = document.createElement("img");
+	asteroid.image.src = "over.png";
+	asteroid.width = 69;
+	asteroid.height = 75;
+	
+	var x = SCREEN_WIDTH/2;
+	var y = SCREEN_HEIGHT/2;
+	
+	var dirX = rand(-10,10);
+	var dirY = rand(-10,10);
+	
+	var magnitude = (dirX * dirX) + (dirY * dirY);
+	if(magnitude != 0)
+	{
+		var oneOverMag = 1 / Math.sqrt(magnitude);
+		dirX *= oneOverMag;
+		dirY *= oneOverMag;
+	}
+	
+	var movX = dirX * SCREEN_WIDTH;
+	var movY = dirY * SCREEN_HEIGHT;
+
+	asteroid.x = x + movX;
+	asteroid.y = y + movY;
+	
+	asteroid.velocityX = -dirX * ASTEROID_SPEED;
+	asteroid.velocityY = -dirY * ASTEROID_SPEED;
+
+	asteroids.push(asteroid);
+	}
 	
 	function stars() 
 	{
@@ -87,4 +156,15 @@ GameState.prototype.draw = function()
 		
 	}*/
 	
+	/*for(var i=0; i<debrisArray.length; i++)
+	{
+		context.drawImage(debrisArray[i].image, debrisArray[i].x, debrisArray[i].y);
+	}
+	//spawnTimer
+	spawnTimer -= deltaTime;
+	if(spawnTimer <= 0)
+	{
+		spawnTimer = 1;
+		debrisSpawn();
+	}*/
 }
