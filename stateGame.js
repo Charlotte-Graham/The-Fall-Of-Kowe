@@ -22,7 +22,9 @@ GameState.prototype.update = function(dt)
 
 GameState.prototype.draw = function() 
 {
-	
+	var deltaTime = getDeltaTime();
+	var gameTimer = 0;
+	//var score = 0;
 	
 	// Paint canvas black.
 	context.fillStyle = "black";
@@ -54,5 +56,10 @@ GameState.prototype.draw = function()
 	
 	// Paint the starfield.
 	stars();
+	//draw player
 	player.draw();
+	//draw score
+		context.fillStyle = "#f00";
+		context.font="20px Arial";
+		context.fillText("Score: " + score, 5, 20, 100);
 }

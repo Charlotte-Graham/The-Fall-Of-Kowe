@@ -33,7 +33,7 @@ function getDeltaTime()
 var fps = 0;
 var fpsCount = 0;
 var fpsTime = 0;
-
+var score = 0;
 
 var DEBUG = 0; //0 FOR OFF 1 FOR ON: drawing debug info
 

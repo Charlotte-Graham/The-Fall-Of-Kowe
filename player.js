@@ -26,7 +26,7 @@ var Player = function(x, y) {
 	//idle right
 	this.sprite.buildAnimation(14, 3, 72.5, 96, 1,
 		[28, 29]);
-	//fall left
+	//idle left
 	this.sprite.buildAnimation(14, 3, 72.5, 96, 0.05,
 		[41, 40]);
 	
@@ -69,25 +69,30 @@ Player.prototype.update = function(dt)
 	var PLAYER_SPEED = 300;
 	
 	// check keypress events
-	if(keyboard.isKeyDown(keyboard.KEY_LEFT) == true) {
+	if(keyboard.isKeyDown(keyboard.KEY_LEFT) == true) 
+	{
 		left = true;
 		this.direction = LEFT;
 		if(this.sprite.currentAnimation != ANIM_WALK_LEFT)
 			this.sprite.setAnimation(ANIM_WALK_LEFT);
 			this.x -= PLAYER_SPEED * dt;
 			this.position.x -= 1;
+			score = score + 1;
 	}
 	
-	else if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true) {
+	else if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true) 
+	{
 		right = true;
 		this.direction = RIGHT;
 		if(this.sprite.currentAnimation != ANIM_WALK_RIGHT)
 			this.sprite.setAnimation(ANIM_WALK_RIGHT);
 			this.x += PLAYER_SPEED * dt;
 			this.position.x += 1;
+			score = score + 1;
 	}
 	
-	else {
+	else 
+	{
 		if(this.jumping == false && this.falling == false)
 		{
 			if(this.direction == LEFT)
@@ -103,12 +108,16 @@ Player.prototype.update = function(dt)
 		}
 	}
 	
-	if(keyboard.isKeyDown(keyboard.KEY_DOWN) == true) {
+	if(keyboard.isKeyDown(keyboard.KEY_DOWN) == true) 
+	{
 		this.position.y += 1;
+		score = score + 1;
 	}
 	
-	if(keyboard.isKeyDown(keyboard.KEY_UP) == true) {
+	if(keyboard.isKeyDown(keyboard.KEY_UP) == true) 
+	{
 		this.position.y -= 1;
+		score = score + 1;
 	}
 }
 
