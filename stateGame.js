@@ -1,5 +1,61 @@
 var player = new Player();
+<<<<<<< HEAD
+=======
+//var debrisSpawn = new spawnDebris();
+var ASTEROID_SPEED = 0.8;
+var asteroids = [];
+var asteroid = {image: document.createElement("img")};
+asteroid.image.src = "over.png";
+>>>>>>> 01cc3b12b22ded3aae690e471f20e5087b45834a
 
+function rand(floor, ceil)
+{
+return Math.floor( (Math.random()* (ceil-floor)) +floor );
+}
+function spawnAsteroid()
+	{
+	var type = rand(0, 3);
+	
+	var asteroid = {};
+
+	asteroid.image = document.createElement("img");
+	asteroid.image.src = "over.png";
+	asteroid.width = 69;
+	asteroid.height = 75;
+	
+	var x = SCREEN_WIDTH/2;
+	var y = SCREEN_HEIGHT/2;
+	
+	var dirX = rand(-10,10);
+	var dirY = rand(-10,10);
+	
+	var magnitude = (dirX * dirX) + (dirY * dirY);
+	if(magnitude != 0)
+	{
+		var oneOverMag = 1 / Math.sqrt(magnitude);
+		dirX *= oneOverMag;
+		dirY *= oneOverMag;
+	}
+	
+	var movX = dirX * SCREEN_WIDTH;
+	var movY = dirY * SCREEN_HEIGHT;
+
+	asteroid.x = x + movX;
+	asteroid.y = y + movY;
+	var velocityX = asteroid.directionX * ASTEROID_SPEED;
+	var velocityY = asteroid.directionY * ASTEROID_SPEED;
+	asteroid.x += velocityX;
+	asteroid.y += velocityY;
+	
+	asteroid.velocityX = -dirX * ASTEROID_SPEED;
+	asteroid.velocityY = -dirY * ASTEROID_SPEED;
+
+	asteroids.push(asteroid);
+	}
+	
+
+	
+	
 var GameState = function() 
 {
 	this.prototype = BaseState;
@@ -46,6 +102,34 @@ GameState.prototype.update = function(dt)
 				debris.y = canvas.height - 1;
 			}
 	}*/
+	for(var i=0; i<asteroids.length; i++)
+	{
+		// update the asteroids position according to its current velocity.
+		// TODO: Dont forget to multiply by deltaTime to get a constant speed
+		asteroids[i].x = asteroids[i].x + asteroids[i].velocityX;
+		asteroids[i].y = asteroids[i].y + asteroids[i].velocityY;
+			
+		// TODO: check if the asteroid has gone out of the screen boundaries
+		// If so, wrap the asteroid around the screen so it comes back from the
+		// other side
+		//wrap asteroid
+		if (asteroid.x >= canvas.width)
+			{
+				asteroid.x = 0;
+			}
+		else if (asteroid.x < 0)
+			{
+				asteroid.x = canvas.width - 1;
+			}
+		if (asteroid.y >= canvas.height)
+			{
+				asteroid.y = 0;
+			}
+		else if (asteroid.y < 0)
+			{
+				asteroid.y = canvas.height - 1;
+			}
+	}
 }
 
 GameState.prototype.draw = function() 
@@ -57,14 +141,21 @@ GameState.prototype.draw = function()
 	var heartImage = document.createElement("img");
 	heartImage.src = "hud_heartFull.png";
 	var spawnTimer = 0;
+<<<<<<< HEAD
 	//var SCREEN_WIDTH = canvas.width;
 	//var SCREEN_HEIGHT = canvas.height;
 	
+=======
+	var SCREEN_WIDTH = canvas.width;
+	var SCREEN_HEIGHT = canvas.height;
+
+>>>>>>> 01cc3b12b22ded3aae690e471f20e5087b45834a
 	// Paint canvas black.
 	context.fillStyle = "black";
 	context.rect(0, 0, canvas.width, canvas.height);
 	context.fill();
 	
+<<<<<<< HEAD
 	/*function spawnAsteroid()
 	{
 	var type = rand(0, 3);
@@ -101,6 +192,9 @@ GameState.prototype.draw = function()
 
 	asteroids.push(asteroid);
 	}*/
+=======
+	
+>>>>>>> 01cc3b12b22ded3aae690e471f20e5087b45834a
 	
 	function stars() 
 	{
@@ -164,6 +258,26 @@ GameState.prototype.draw = function()
 	if(spawnTimer <= 0)
 	{
 		spawnTimer = 1;
+<<<<<<< HEAD
 		spawnDebris();
 	}
+=======
+		debrisSpawn();
+	}*/
+	
+		
+	for(var i=0; i<asteroids.length; i++)
+	{
+		context.drawImage(asteroids[i].image, asteroids[i].x, asteroids[i].y);
+	}
+	
+	//spawnTimer
+	spawnTimer -= deltaTime;
+	if(spawnTimer <= 0)
+	{
+		spawnTimer = 1;
+		spawnAsteroid();
+	}
+	
+>>>>>>> 01cc3b12b22ded3aae690e471f20e5087b45834a
 }
