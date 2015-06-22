@@ -1,5 +1,11 @@
 var spawnTimer = 0;
 var ASTEROID_SPEED = 0.8;
+var debris = [];
+
+function rand(floor, ceil)
+{
+    return Math.floor( (Math.random()* (ceil-floor)) +floor );
+}
 
 var Debris = function()
 {
