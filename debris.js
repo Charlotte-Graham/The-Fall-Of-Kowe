@@ -63,9 +63,9 @@ var Debris = function()
 
 Debris.prototype.draw = function()
 {
-    for(var i=0; i<asteroids.length; i++)
+    for(var i=0; i<debris.length; i++)
     {
-        context.drawImage(asteroids[i].image, asteroids[i].x, asteroids[i].y);
+        context.drawImage(debris[i].image, debris[i].x, debris[i].y);
     }
         
     spawnTimer -= deltaTime;
@@ -75,7 +75,7 @@ Debris.prototype.draw = function()
         spawnDebris();
     }
 
-    for(var i=0; i<asteroids.length; i++)
+    for(var i=0; i<debris.length; i++)
     {
         for(var j=0; j<player.length; j++)
         {
