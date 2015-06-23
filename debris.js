@@ -1,3 +1,8 @@
+var canvas = document.getElementById("gameCanvas");
+
+var SCREEN_WIDTH = canvas.width;
+var SCREEN_HEIGHT = canvas.height;
+
 var DEBRIS_SPEED = 0.8;
 var debrisArray = [];
 
