@@ -37,6 +37,19 @@ var spawnTimer = 0;
 
 var spawnRate=1500;
 var lastSpawn=-1;
+var lives = 3;
+//collision detection
+function intersects(x1, y1, w1, h1, x2, y2, w2, h2)
+{
+	if(y2 + h2 < y1 ||
+		x2 + w2 < x1 ||
+		x2 > x1 + w1 ||
+		y2 > y1 + h1)
+	{
+		return false;
+	}
+	return true;
+}
 
 
 var GameState = function() 
@@ -91,7 +104,7 @@ GameState.prototype.update = function(dt)
 
 GameState.prototype.draw = function() 
 {
-	var lives = 3;
+
 	var gameTimer = 0;
 	//var score = 0;
 	var heartImage = document.createElement("img");
@@ -142,25 +155,23 @@ GameState.prototype.draw = function()
 	{
 		context.drawImage(heartImage, 20 + ((heartImage.width+2)*i), 400);
 	}
-	/*if(player.isDead == false)
-	{
-		if(player.position.y > SCREEN_HEIGHT)
-		{
-				player.isDead == true;
-				lives -= 1;
-				player.position.set(35, 250);
-		}
-		if(lives == 0)
-		{
-			gameState = STATE_GAMEOVER;
-			return;
-		}		
-		
-	}*/
+	
 	
 	for(var i=0; i<debrisArray.length; i++)
 	{
-		context.drawImage(debrisArray[i].image, debrisArray[i].x, debrisArray[i].y);	
+		context.drawImage(debrisArray[i].image, debrisArray[i].x, debrisArray[i].y);
+	}
+	for(var i=0; i<debrisArray.length; i++)
+	{
+		if(player.isDead == false)
+			{
+				if(intersects(debrisArray[i].x, debrisArray[i].y, debrisArray[i].width, debrisArray[i].height,
+					player.position.x, player.position.y, player.width/2, player.height/2)== true)
+				{
+				lives -= 1;
+				//player.isDead == true;
+				}
+			}
 	}
 	//spawnTimer
 	/*spawnTimer -= deltaTime;
@@ -169,12 +180,15 @@ GameState.prototype.draw = function()
 		spawnTimer = 1;
 		spawnDebris();
 	}*/
-	var time=Date.now();
-	 if(time>(lastSpawn+spawnRate)){
+	
+	  // get the elapsed time
+        var time=Date.now();
+
+        // see if its time to spawn a new object
+        if(time>(lastSpawn+spawnRate)){
             lastSpawn=time;
             spawnDebris();
         }
-
 	
 	
 }
