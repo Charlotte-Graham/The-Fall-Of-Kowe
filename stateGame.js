@@ -34,7 +34,10 @@ var deltaTime = getDeltaTime();
 var dt = deltaTime;
 
 var spawnTimer = 0;	
-spawnTimer -= deltaTime;
+
+var spawnRate=1500;
+var lastSpawn=-1;
+
 
 var GameState = function() 
 {
@@ -160,12 +163,18 @@ GameState.prototype.draw = function()
 		context.drawImage(debrisArray[i].image, debrisArray[i].x, debrisArray[i].y);	
 	}
 	//spawnTimer
-	
+	/*spawnTimer -= deltaTime;
 	if(spawnTimer <= 0)
 	{
 		spawnTimer = 1;
 		spawnDebris();
-	}
+	}*/
+	var time=Date.now();
+	 if(time>(lastSpawn+spawnRate)){
+            lastSpawn=time;
+            spawnDebris();
+        }
 
+	
 	
 }
