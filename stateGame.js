@@ -1,5 +1,40 @@
+var startFrameMillis = Date.now();
+var endFrameMillis = Date.now();
+
+function getDeltaTime()
+{
+	endFrameMillis = startFrameMillis;
+	startFrameMillis = Date.now();
+
+		// Find the delta time (dt) - the change in time since the last drawFrame
+		// We need to modify the delta time to something we can use.
+		// We want 1 to represent 1 second, so if the delta is in milliseconds
+		// we divide it by 1000 (or multiply by 0.001). This will make our 
+		// animations appear at the right speed, though we may need to use
+		// some large values to get objects movement and rotation correct
+	var deltaTime = (startFrameMillis - endFrameMillis) * 0.001;
+	
+		// validate that the delta is within range
+	if(deltaTime > 1)
+		deltaTime = 1;
+		
+	return deltaTime;
+}
+
+
+
 var player = new Player();
-var debris = new spawnDebris();
+//var debris = new spawnDebris();
+var debris = {
+		image: document.createElement("img"),
+		width: 32,
+		height: 32,
+	};
+var deltaTime = getDeltaTime();
+var dt = deltaTime;
+
+var spawnTimer = 0;	
+spawnTimer -= deltaTime;
 
 var GameState = function() 
 {
@@ -47,20 +82,13 @@ GameState.prototype.update = function(dt)
 				debris.y = canvas.height - 1;
 			}
 	}
-	var spawnTimer = 0;	
-	//spawnTimer
-	spawnTimer -= dt;
-	if(spawnTimer <= 0)
-	{
-		spawnTimer = 1;
-		spawnDebris();
-	}
+	
+	
 }
 
 GameState.prototype.draw = function() 
 {
 	var lives = 3;
-	var deltaTime = getDeltaTime();
 	var gameTimer = 0;
 	//var score = 0;
 	var heartImage = document.createElement("img");
@@ -129,14 +157,15 @@ GameState.prototype.draw = function()
 	
 	for(var i=0; i<debrisArray.length; i++)
 	{
-		context.drawImage(debrisArray[i].image, debrisArray[i].x, debrisArray[i].y);
+		context.drawImage(debrisArray[i].image, debrisArray[i].x, debrisArray[i].y);	
 	}
-	
 	//spawnTimer
-	/*spawnTimer -= deltaTime;
+	
 	if(spawnTimer <= 0)
 	{
 		spawnTimer = 1;
 		spawnDebris();
-	}*/
+	}
+
+	
 }
