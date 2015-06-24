@@ -104,6 +104,8 @@ GameState.prototype.update = function(dt)
 
 GameState.prototype.draw = function() 
 {
+	//if player collides with debris or game timer ends whichever is the preferred choice
+	//stateManager.switchState(new OverState());
 
 	var gameTimer = 0;
 	//var score = 0;
