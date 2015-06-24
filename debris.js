@@ -18,7 +18,7 @@ function spawnDebris()
     var debris = {};
     
     debris.image = document.createElement("img");
-    debris.image.src = "over.png";
+    debris.image.src = "over2.png";
     debris.width = 32;
     debris.height = 32;
     

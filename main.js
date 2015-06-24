@@ -44,7 +44,7 @@ var SCREEN_HEIGHT = canvas.height;
 var keyboard = new Keyboard();
 
 var stateManager = new StateManager();
- 
+
 
 stateManager.pushState( new GameState() );
 
