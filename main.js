@@ -46,9 +46,9 @@ var keyboard = new Keyboard();
 var stateManager = new StateManager();
 
 
-stateManager.pushState( new GameState() );
+//stateManager.pushState( new GameState() );
 
-//stateManager.pushState( new SplashState() );
+stateManager.pushState( new SplashState() );
 //stateManager.pushState( new GameState() );
 //stateManager.pushState( new OverState() );
 
@@ -64,6 +64,15 @@ function run()
 	stateManager.update(deltaTime);
 	stateManager.draw();
 	
+	fpsTime += deltaTime;
+	fpsCount++;
+	if(fpsTime >= 1)
+	{
+		fpsTime -= 1;
+		fps = fpsCount;
+		fpsCount = 0;
+	}
+
 	if(DEBUG ==1)
 	{
 		fpsTime == deltaTime
@@ -74,12 +83,11 @@ function run()
 			fps = fpsCount;
 			fpsCount = 0;
 		}
-		
-		//draw FPS
-		context.fillStyle = "#f00";
-		context.font="14px Arial";
-		context.fillText("FPS: " + fps, 5, 20, 100);
 	}
+	//draw FPS
+	context.fillStyle = "#f00";
+	context.font="16px Arial";
+	context.fillText("FPS: " + fps, 20, 60, 100);
 }
 
 
