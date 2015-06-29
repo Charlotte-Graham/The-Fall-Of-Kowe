@@ -18,9 +18,9 @@ function spawnDebris()
     var debris = {};
     
     debris.image = document.createElement("img");
-    debris.image.src = "over2.png";
-    debris.width = 32;
-    debris.height = 32;
+    debris.image.src = "shipYellow_manned.png";
+    debris.width = 124;
+    debris.height = 408
     
     var x = SCREEN_WIDTH/2;
     var y = SCREEN_HEIGHT/2;

@@ -18,7 +18,7 @@ function spawnPowerup()
     var powerup = {};
     
     powerup.image = document.createElement("img");
-    powerup.image.src = "plus.png";
+    powerup.image.src = "blueCoinPlus.png";
     powerup.width = 32;
     powerup.height = 32;
     
@@ -47,3 +47,4 @@ function spawnPowerup()
     
     powerupArray.push(powerup);
 }
+

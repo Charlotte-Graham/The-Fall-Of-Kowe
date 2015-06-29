@@ -18,7 +18,7 @@ function spawnPowerdown()
     var powerdown = {};
     
     powerdown.image = document.createElement("img");
-    powerdown.image.src = "minus.png";
+    powerdown.image.src = "redCoinMinus.png";
     powerdown.width = 32;
     powerdown.height = 32;
     
