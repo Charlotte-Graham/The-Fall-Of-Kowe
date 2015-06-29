@@ -105,6 +105,22 @@ GameState.prototype.update = function(dt)
 		// TODO: Dont forget to multiply by deltaTime to get a constant speed
 		powerupArray[i].x = powerupArray[i].x + powerupArray[i].velocityX;
 		powerupArray[i].y = powerupArray[i].y + powerupArray[i].velocityY;
+				if (debris.width >= canvas.width)
+			{
+				debris.x = 0;
+			}
+		else if (debris.width < 0)
+			{
+				debris.x = canvas.width - 1;
+			}
+		if (debris.height >= canvas.height)
+			{
+				debris.y = 0;
+			}
+		else if (debris.height < 0)
+			{
+				debris.y = canvas.height - 1;
+			}
 	}
 	
 	for(var i=0; i<powerdownArray.length; i++)
@@ -206,17 +222,17 @@ GameState.prototype.draw = function()
 				if(intersects(powerupArray[i].x, powerupArray[i].y, powerupArray[i].width, powerupArray[i].height,
 					player.position.x, player.position.y, player.width/2, player.height/2)== true)
 				{
-				score += 250;
+				score += 2500;
 				context.fillStyle = "#f00";
 				context.font="20px Arial";
-				context.fillText("+250", powerupArray[i].x, powerupArray[i].y, 100);
+				context.fillText("+250", player.x/2, player.y - 45, 100);
 				powerupArray.splice(i, 1);
 				return;
 				//player.isDead == true;
 				}
 			}
 	}
-	
+	//powerdown arrary
 	for(var i=0; i<powerdownArray.length; i++)
 	{
 		context.drawImage(powerdownArray[i].image, powerdownArray[i].x, powerdownArray[i].y);
@@ -228,8 +244,10 @@ GameState.prototype.draw = function()
 				if(intersects(powerdownArray[i].x, powerdownArray[i].y, powerdownArray[i].width, powerdownArray[i].height,
 					player.position.x, player.position.y, player.width/2, player.height/2)== true)
 				{
-				score += 250;
-				
+				score -= 2500;
+				context.fillStyle = "#f00";
+				context.font="20px Arial";
+				context.fillText("-250", player.x/2, player.y - 45, 100);
 				powerdownArray.splice(i, 1);
 				return;
 				//player.isDead == true;
@@ -253,7 +271,11 @@ GameState.prototype.draw = function()
 	{
 		lastSpawn=time;
 		spawnDebris();
+		spawnPowerup();
+		spawnPowerdown();
 	}
+	
+	
 	
 	if(lives == 0)
 	{

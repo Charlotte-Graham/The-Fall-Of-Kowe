@@ -18,7 +18,7 @@ function spawnPowerup()
     var powerup = {};
     
     powerup.image = document.createElement("img");
-    powerup.image.src = "over2.png";
+    powerup.image.src = "plus.png";
     powerup.width = 32;
     powerup.height = 32;
     

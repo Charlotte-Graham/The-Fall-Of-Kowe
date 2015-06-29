@@ -37,7 +37,7 @@ var Player = function(x, y) {
 	
 	
 	this.position = new Vector2();
-	this.position.set( 100 , 250 );
+	this.position.set( 320 , 240 );
 	
 	this.width = 72.5;
 	this.height = 96;

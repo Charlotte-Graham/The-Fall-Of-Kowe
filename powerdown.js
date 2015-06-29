@@ -18,7 +18,7 @@ function spawnPowerdown()
     var powerdown = {};
     
     powerdown.image = document.createElement("img");
-    powerdown.image.src = "over2.png";
+    powerdown.image.src = "minus.png";
     powerdown.width = 32;
     powerdown.height = 32;
     
