@@ -152,6 +152,7 @@ GameState.prototype.draw = function()
 	context.font="20px Arial";
 	context.fillText("Score: " + score, 20, 40, 100);
 	
+	
 	//life counter
 	for(var i=0; i<lives; i++)
 	{
@@ -184,13 +185,18 @@ GameState.prototype.draw = function()
 	}*/
 	
 	  // get the elapsed time
-        var time=Date.now();
+	var time = Date.now();
 
         // see if its time to spawn a new object
-        if(time>(lastSpawn+spawnRate)){
-            lastSpawn=time;
-            spawnDebris();
-        }
+	if(time>(lastSpawn+spawnRate))
+	{
+		lastSpawn=time;
+		spawnDebris();
+	}
 	
+	if(lives == 0)
+	{
+		stateManager.switchState(new OverState());
+	}
 	
 }
