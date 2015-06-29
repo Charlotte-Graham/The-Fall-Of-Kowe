@@ -10,7 +10,7 @@ var ANIM_MAX = 6;
 
 var Player = function(x, y) {
 	
-	this.sprite = new Sprite("spritesheet.png");
+	/*this.sprite = new Sprite("spritesheet.png");
 	//walk right
 	this.sprite.buildAnimation(14, 3, 72.5, 96, 0.05,
 		[0, 1, 2, 3, 4, 5, 14, 15, 16, 17, 18]);
@@ -33,8 +33,10 @@ var Player = function(x, y) {
 	for(var i=0; i<ANIM_MAX; i++)
 	{
 		this.sprite.setAnimationOffset(i, 0, 0);
-	}
-	
+	}*/
+	this.sprite = new Sprite("shipGreen_manned.png");
+	this.sprite.buildAnimation(1, 1, 124, 123, 1, [0]);
+	this.sprite.setAnimationOffset(0, 0, 0);
 	
 	this.position = new Vector2();
 	this.position.set( 320 , 240 );

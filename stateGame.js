@@ -27,8 +27,8 @@ var player = new Player();
 //var debris = new spawnDebris();
 var debris = {
 		image: document.createElement("img"),
-		width: 32,
-		height: 32,
+		width: 124,
+		height: 108,
 	};
 var powerup = {
 		image: document.createElement("img"),
