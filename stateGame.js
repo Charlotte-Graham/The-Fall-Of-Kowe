@@ -218,10 +218,7 @@ GameState.prototype.draw = function()
 	stars();
 	//draw player
 	player.draw();
-	//draw score
-	context.fillStyle = "#f00";
-	context.font="20px Arial";
-	context.fillText("Score: " + score, 20, 40, 100);
+
 	
 	
 	//life counter
@@ -242,7 +239,7 @@ GameState.prototype.draw = function()
 				if(intersects(debrisArray[i].x, debrisArray[i].y, debrisArray[i].width, debrisArray[i].height,
 					player.position.x, player.position.y, player.width, player.height)== true)
 				{
-				//lives -= 1;
+				lives -= 1;
 				debrisArray.splice(i, 1);
 				return;
 				//player.isDead == true;
@@ -312,7 +309,10 @@ GameState.prototype.draw = function()
 		spawnPowerup();
 		spawnPowerdown();
 	}
-	
+		//draw score
+	context.fillStyle = "#f00";
+	context.font="20px Arial";
+	context.fillText("Score: " + score, 20, 40, 100);
 	
 	
 	if(lives == 0)
