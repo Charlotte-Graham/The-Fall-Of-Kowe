@@ -172,6 +172,8 @@ GameState.prototype.draw = function()
 					player.position.x, player.position.y, player.width/2, player.height/2)== true)
 				{
 				lives -= 1;
+				debrisArray.splice(i, 1);
+				return;
 				//player.isDead == true;
 				}
 			}
