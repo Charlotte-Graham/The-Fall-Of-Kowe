@@ -52,9 +52,10 @@ OverState.prototype.draw = function()
 	// Paint the starfield.
 	stars();
 	//draw the score
+	//, 100
 	context.fillStyle = "#f00";
-	context.font="20px Arial";
-	context.fillText("Score: " + score, 20, 40, 100);
+	context.font="34px Hobo Std";
+	context.fillText("Score: " + score, 230, 280);
 	//GAME OVER!!!!!!!!!!!!!!!!!!!!
 	context.fillStyle = "#ff6c00";
 	context.font="76px Hobo Std";
