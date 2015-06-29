@@ -32,7 +32,7 @@ var Player = function(x, y) {
 	
 	for(var i=0; i<ANIM_MAX; i++)
 	{
-		this.sprite.setAnimationOffset(i, -55, -87);
+		this.sprite.setAnimationOffset(i, 0, 0);
 	}
 	
 	
@@ -58,9 +58,9 @@ var Player = function(x, y) {
 };
 
 
-Player.prototype.update = function(dt)
+Player.prototype.update = function(deltaTime)
 {
-	this.sprite.update(dt);
+	this.sprite.update(deltaTime);
 	
 	var left = false;
 	var right = false;
@@ -75,7 +75,7 @@ Player.prototype.update = function(dt)
 		this.direction = LEFT;
 		if(this.sprite.currentAnimation != ANIM_WALK_LEFT)
 			this.sprite.setAnimation(ANIM_WALK_LEFT);
-			this.x -= PLAYER_SPEED * dt;
+			this.x -= PLAYER_SPEED * deltaTime;
 			this.position.x -= 2;
 			score = score + 1;
 	}
@@ -86,12 +86,12 @@ Player.prototype.update = function(dt)
 		this.direction = RIGHT;
 		if(this.sprite.currentAnimation != ANIM_WALK_RIGHT)
 			this.sprite.setAnimation(ANIM_WALK_RIGHT);
-			this.x += PLAYER_SPEED * dt;
+			this.x += PLAYER_SPEED * deltaTime;
 			this.position.x += 2;
 			score = score + 1;
 	}
 	
-	else 
+	/*else 
 	{
 		if(this.jumping == false && this.falling == false)
 		{
@@ -106,7 +106,7 @@ Player.prototype.update = function(dt)
 				this.sprite.setAnimation(ANIM_IDLE_RIGHT);
 			}
 		}
-	}
+	}*/
 	
 	if(keyboard.isKeyDown(keyboard.KEY_DOWN) == true) 
 	{

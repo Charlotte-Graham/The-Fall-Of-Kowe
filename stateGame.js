@@ -30,6 +30,16 @@ var debris = {
 		width: 32,
 		height: 32,
 	};
+var powerup = {
+		image: document.createElement("img"),
+		width: 32,
+		height: 32,
+	};
+var powerdown = {
+		image: document.createElement("img"),
+		width: 32,
+		height: 32,
+	};
 var deltaTime = getDeltaTime();
 var dt = deltaTime;
 
@@ -83,19 +93,23 @@ GameState.prototype.update = function(dt)
 		//wrap asteroid
 		if (debris.width >= canvas.width)
 			{
-				debris.x = 0;
+				debrisArray.splice(i, 1);
+				return;
 			}
 		else if (debris.width < 0)
 			{
-				debris.x = canvas.width - 1;
+				debrisArray.splice(i, 1);
+				return;
 			}
 		if (debris.height >= canvas.height)
 			{
-				debris.y = 0;
+				debrisArray.splice(i, 1);
+				return;
 			}
 		else if (debris.height < 0)
 			{
-				debris.y = canvas.height - 1;
+				debrisArray.splice(i, 1);
+				return;
 			}
 	}
 	
@@ -105,22 +119,28 @@ GameState.prototype.update = function(dt)
 		// TODO: Dont forget to multiply by deltaTime to get a constant speed
 		powerupArray[i].x = powerupArray[i].x + powerupArray[i].velocityX;
 		powerupArray[i].y = powerupArray[i].y + powerupArray[i].velocityY;
-				if (debris.width >= canvas.width)
+	
+		if (powerup.width >= canvas.width)
 			{
-				debris.x = 0;
+				powerupArray.splice(i, 1);
+				return;
 			}
-		else if (debris.width < 0)
+		else if (powerup.width < 0)
 			{
-				debris.x = canvas.width - 1;
+				powerupArray.splice(i, 1);
+				return;
 			}
-		if (debris.height >= canvas.height)
+		if (powerup.height >= canvas.height)
 			{
-				debris.y = 0;
+				powerupArray.splice(i, 1);
+				return;
 			}
-		else if (debris.height < 0)
+		else if (powerup.height < 0)
 			{
-				debris.y = canvas.height - 1;
+				powerupArray.splice(i, 1);
+				return;
 			}
+	
 	}
 	
 	for(var i=0; i<powerdownArray.length; i++)
@@ -129,6 +149,27 @@ GameState.prototype.update = function(dt)
 		// TODO: Dont forget to multiply by deltaTime to get a constant speed
 		powerdownArray[i].x = powerdownArray[i].x + powerdownArray[i].velocityX;
 		powerdownArray[i].y = powerdownArray[i].y + powerdownArray[i].velocityY;
+		
+		if (powerdown.width >= canvas.width)
+			{
+				powerdownArray.splice(i, 1);
+				return;
+			}
+		else if (powerdown.width < 0)
+			{
+				powerdownArray.splice(i, 1);
+				return;
+			}
+		if (powerdown.height >= canvas.height)
+			{
+				powerdownArray.splice(i, 1);
+				return;
+			}
+		else if (powerdown.height < 0)
+			{
+				powerdownArray.splice(i, 1);
+				return;
+			}
 	}
 }
 
@@ -197,17 +238,16 @@ GameState.prototype.draw = function()
 	//check debris-player collision
 	for(var i=0; i<debrisArray.length; i++)
 	{
-		if(player.isDead == false)
-			{
+		
 				if(intersects(debrisArray[i].x, debrisArray[i].y, debrisArray[i].width, debrisArray[i].height,
-					player.position.x, player.position.y, player.width/2, player.height/2)== true)
+					player.position.x, player.position.y, player.width, player.height)== true)
 				{
-				lives -= 1;
+				//lives -= 1;
 				debrisArray.splice(i, 1);
 				return;
 				//player.isDead == true;
 				}
-			}
+			
 	}
 	
 	//poweuparray
@@ -217,20 +257,19 @@ GameState.prototype.draw = function()
 	}
 	for(var i=0; i<powerupArray.length; i++)
 	{
-		if(player.isDead == false)
-			{
+		
 				if(intersects(powerupArray[i].x, powerupArray[i].y, powerupArray[i].width, powerupArray[i].height,
-					player.position.x, player.position.y, player.width/2, player.height/2)== true)
+					player.position.x, player.position.y, player.width, player.height)== true)
 				{
 				score += 2500;
 				context.fillStyle = "#f00";
 				context.font="20px Arial";
-				context.fillText("+250", player.x/2, player.y - 45, 100);
+				context.fillText("+2500", 20, 65, 100);
 				powerupArray.splice(i, 1);
 				return;
 				//player.isDead == true;
 				}
-			}
+			
 	}
 	//powerdown arrary
 	for(var i=0; i<powerdownArray.length; i++)
@@ -239,20 +278,19 @@ GameState.prototype.draw = function()
 	}
 	for(var i=0; i<powerdownArray.length; i++)
 	{
-		if(player.isDead == false)
-			{
+		
 				if(intersects(powerdownArray[i].x, powerdownArray[i].y, powerdownArray[i].width, powerdownArray[i].height,
-					player.position.x, player.position.y, player.width/2, player.height/2)== true)
+					player.position.x, player.position.y, player.width, player.height)== true)
 				{
 				score -= 2500;
 				context.fillStyle = "#f00";
 				context.font="20px Arial";
-				context.fillText("-250", player.x/2, player.y - 45, 100);
+				context.fillText("-2500", 20, 65, 100);
 				powerdownArray.splice(i, 1);
 				return;
 				//player.isDead == true;
 				}
-			}
+			
 	}
 	
 	//spawnTimer
