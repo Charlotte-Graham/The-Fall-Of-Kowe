@@ -99,7 +99,21 @@ GameState.prototype.update = function(dt)
 			}
 	}
 	
+	for(var i=0; i<powerupArray.length; i++)
+	{
+		// update the asteroids position according to its current velocity.
+		// TODO: Dont forget to multiply by deltaTime to get a constant speed
+		powerupArray[i].x = powerupArray[i].x + powerupArray[i].velocityX;
+		powerupArray[i].y = powerupArray[i].y + powerupArray[i].velocityY;
+	}
 	
+	for(var i=0; i<powerdownArray.length; i++)
+	{
+		// update the asteroids position according to its current velocity.
+		// TODO: Dont forget to multiply by deltaTime to get a constant speed
+		powerdownArray[i].x = powerdownArray[i].x + powerdownArray[i].velocityX;
+		powerdownArray[i].y = powerdownArray[i].y + powerdownArray[i].velocityY;
+	}
 }
 
 GameState.prototype.draw = function() 
@@ -159,11 +173,12 @@ GameState.prototype.draw = function()
 		context.drawImage(heartImage, 20 + ((heartImage.width+2)*i), 400);
 	}
 	
-	
+	//draw debris
 	for(var i=0; i<debrisArray.length; i++)
 	{
 		context.drawImage(debrisArray[i].image, debrisArray[i].x, debrisArray[i].y);
 	}
+	//check debris-player collision
 	for(var i=0; i<debrisArray.length; i++)
 	{
 		if(player.isDead == false)
@@ -178,6 +193,50 @@ GameState.prototype.draw = function()
 				}
 			}
 	}
+	
+	//poweuparray
+	for(var i=0; i<powerupArray.length; i++)
+	{
+		context.drawImage(powerupArray[i].image, powerupArray[i].x, powerupArray[i].y);
+	}
+	for(var i=0; i<powerupArray.length; i++)
+	{
+		if(player.isDead == false)
+			{
+				if(intersects(powerupArray[i].x, powerupArray[i].y, powerupArray[i].width, powerupArray[i].height,
+					player.position.x, player.position.y, player.width/2, player.height/2)== true)
+				{
+				score += 250;
+				context.fillStyle = "#f00";
+				context.font="20px Arial";
+				context.fillText("+250", powerupArray[i].x, powerupArray[i].y, 100);
+				powerupArray.splice(i, 1);
+				return;
+				//player.isDead == true;
+				}
+			}
+	}
+	
+	for(var i=0; i<powerdownArray.length; i++)
+	{
+		context.drawImage(powerdownArray[i].image, powerdownArray[i].x, powerdownArray[i].y);
+	}
+	for(var i=0; i<powerdownArray.length; i++)
+	{
+		if(player.isDead == false)
+			{
+				if(intersects(powerdownArray[i].x, powerdownArray[i].y, powerdownArray[i].width, powerdownArray[i].height,
+					player.position.x, player.position.y, player.width/2, player.height/2)== true)
+				{
+				score += 250;
+				
+				powerdownArray.splice(i, 1);
+				return;
+				//player.isDead == true;
+				}
+			}
+	}
+	
 	//spawnTimer
 	/*spawnTimer -= deltaTime;
 	if(spawnTimer <= 0)
