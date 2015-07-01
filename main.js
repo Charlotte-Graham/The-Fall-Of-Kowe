@@ -41,8 +41,6 @@ var DEBUG = 0; //0 FOR OFF 1 FOR ON: drawing debug info
 var SCREEN_WIDTH = canvas.width;
 var SCREEN_HEIGHT = canvas.height;
 
-var musicBackground;
-
 var keyboard = new Keyboard();
 
 var stateManager = new StateManager();
@@ -50,6 +48,8 @@ var stateManager = new StateManager();
 stateManager.pushState( new SplashState() );
 //stateManager.pushState( new GameState() );
 //stateManager.pushState( new OverState() );
+
+var musicBackground;
 
 function initialize()
 {
@@ -101,6 +101,8 @@ function run()
 		context.fillText("FPS: " + fps, 20, 60, 100);
 	}
 }
+
+initialize();
 
 
 //-------------------- Don't modify anything below here
