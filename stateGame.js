@@ -45,7 +45,7 @@ var dt = deltaTime;
 
 var spawnTimer = 0;	
 
-var spawnRate=1500;
+var spawnRate=3000;
 var lastSpawn=-1;
 var lives = 3;
 //collision detection

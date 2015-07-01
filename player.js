@@ -39,10 +39,10 @@ var Player = function(x, y) {
 	this.sprite.setAnimationOffset(0, 0, 0);
 	
 	this.position = new Vector2();
-	this.position.set( 320 , 240 );
+	this.position.set( 196 , 117 );
 	
-	this.width = 72.5;
-	this.height = 96;
+	this.width = 124;
+	this.height = 123;
 	
 	this.velocity = new Vector2();
 	
