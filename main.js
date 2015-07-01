@@ -41,6 +41,8 @@ var DEBUG = 0; //0 FOR OFF 1 FOR ON: drawing debug info
 var SCREEN_WIDTH = canvas.width;
 var SCREEN_HEIGHT = canvas.height;
 
+var musicBackground;
+
 var keyboard = new Keyboard();
 
 var stateManager = new StateManager();
@@ -49,6 +51,17 @@ stateManager.pushState( new SplashState() );
 //stateManager.pushState( new GameState() );
 //stateManager.pushState( new OverState() );
 
+function initialize()
+{
+	musicBackground = new Howl(
+	{
+		urls: ["fuckimusm.ogg"],
+		loop: true,
+		buffer: true,
+		volume: 1
+	});
+	musicBackground.play();
+}
 
 function run() 
 {
